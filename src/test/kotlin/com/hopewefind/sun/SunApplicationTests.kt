@@ -1,10 +1,8 @@
 package com.hopewefind.sun
 
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
 
-@SpringBootTest
-class SunApplicationTests {
+class SunApplicationTests : BaseIntegrationTest() {
 
     @Test
     fun contextLoads() {

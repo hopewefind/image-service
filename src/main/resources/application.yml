@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: sun
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/sun
+    username: sun
+    password: sun
+
+  sql:
+    init:
+      mode: always
+
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+image:
+  storage-path: test-uploads
+
+
+logging:
+  level:
+    com.hopewefind.sun: DEBUG
+    org.springframework: INFO
+    org.testcontainers: INFO
+    reactor: INFO
+---
+spring:
+  config:
+    activate:
+      on-profile: integration-test
+  r2dbc:
+    url: r2dbc:tc:postgresql:///testdb?TC_IMAGE_TAG=17.2-alpine
+    username: test
+    password: test
+  flyway:
+    enabled: false
+  liquibase:
+    enabled: false
+
+#    org.springframework.data.r2dbc: DEBUG
+#    io.r2dbc.postgresql: DEBUG
+---
+
