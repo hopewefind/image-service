@@ -2,11 +2,6 @@ spring:
   application:
     name: sun
 
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5432/sun
-    username: sun
-    password: sun
-
   sql:
     init:
       mode: always

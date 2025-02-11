@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:17.2
+    container_name: sun_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: sun
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: myapp_backend
+    depends_on:
+      - database
+    environment:
+      SPRING_R2DBC_URL: r2dbc:postgresql://database:5432/sun
+      SPRING_R2DBC_USERNAME: user
+      SPRING_R2DBC_PASSWORD: password
+    ports:
+      - "8080:8080"
+    restart: always
+
+volumes:
+  postgres_data:
