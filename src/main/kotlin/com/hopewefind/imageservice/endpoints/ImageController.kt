@@ -1,6 +1,6 @@
-package com.hopewefind.sun.endpoints
+package com.hopewefind.imageservice.endpoints
 
-import com.hopewefind.sun.services.ImageService
+import com.hopewefind.imageservice.services.ImageService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE

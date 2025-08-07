@@ -1,4 +1,4 @@
-package com.hopewefind.sun.repositories.entities
+package com.hopewefind.imageservice.repositories.entities
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column

@@ -1,7 +1,7 @@
-package com.hopewefind.sun.endpoints
+package com.hopewefind.imageservice.endpoints
 
-import com.hopewefind.sun.BaseIntegrationTest
-import com.hopewefind.sun.repositories.ImageRepository
+import com.hopewefind.imageservice.BaseIntegrationTest
+import com.hopewefind.imageservice.repositories.ImageRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
@@ -14,7 +14,7 @@ import org.springframework.http.client.MultipartBodyBuilder
 import org.springframework.test.web.reactive.server.WebTestClient
 import java.nio.file.Path
 
-class ImageControllerTest : BaseIntegrationTest() {
+class ImageControllerIT : BaseIntegrationTest() {
 
     @Autowired
     private lateinit var webTestClient: WebTestClient

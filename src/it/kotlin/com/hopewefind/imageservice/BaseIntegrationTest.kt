@@ -1,4 +1,4 @@
-package com.hopewefind.sun
+package com.hopewefind.imageservice
 
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.TestInstance

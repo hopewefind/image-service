@@ -1,11 +1,11 @@
-package com.hopewefind.sun
+package com.hopewefind.imageservice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SunApplication
+class ImageServiceApplication
 
 fun main(args: Array<String>) {
-    runApplication<SunApplication>(*args)
+    runApplication<ImageServiceApplication>(*args)
 }

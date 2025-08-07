@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sun
+    name: image-service
 
   sql:
     init:
@@ -18,7 +18,7 @@ image:
 
 logging:
   level:
-    com.hopewefind.sun: DEBUG
+    com.hopewefind.imageservice: DEBUG
     org.springframework: INFO
     org.testcontainers: INFO
     reactor: INFO
@@ -36,7 +36,5 @@ spring:
   liquibase:
     enabled: false
 
-#    org.springframework.data.r2dbc: DEBUG
-#    io.r2dbc.postgresql: DEBUG
 ---
 

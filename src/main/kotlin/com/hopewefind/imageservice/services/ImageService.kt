@@ -1,7 +1,7 @@
-package com.hopewefind.sun.services
+package com.hopewefind.imageservice.services
 
-import com.hopewefind.sun.repositories.ImageRepository
-import com.hopewefind.sun.repositories.entities.ImageEntity
+import com.hopewefind.imageservice.repositories.ImageRepository
+import com.hopewefind.imageservice.repositories.entities.ImageEntity
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
