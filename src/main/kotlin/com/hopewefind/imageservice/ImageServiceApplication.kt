@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class ImageServiceApplication
 
 fun main(args: Array<String>) {
-    runApplication<ImageServiceApplication>(*args)
+    runApplication<ImageServiceApplication>(args = args)
 }

@@ -1,7 +1,7 @@
 package com.hopewefind.imageservice.endpoints
 
 import com.hopewefind.imageservice.BaseIntegrationTest
-import com.hopewefind.imageservice.repositories.ImageRepository
+import com.hopewefind.imageservice.infrastructure.persistence.ImageJpaRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
@@ -20,14 +20,14 @@ class ImageControllerIT : BaseIntegrationTest() {
     private lateinit var webTestClient: WebTestClient
 
     @Autowired
-    private lateinit var imageRepository: ImageRepository
+    private lateinit var imageJpaRepository: ImageJpaRepository
 
     @TempDir
     private lateinit var tempDir: Path
 
     @BeforeEach
     fun setUp() {
-        imageRepository.deleteAll().block()
+        imageJpaRepository.deleteAll().block()
     }
 
     @AfterEach
@@ -70,8 +70,8 @@ class ImageControllerIT : BaseIntegrationTest() {
             .exchange()
             .expectStatus().isCreated
             .expectBody()
-            .jsonPath("$.id").value<String> { id ->
-                val imageEntity = imageRepository.findById(id.toLong()).block()
+            .jsonPath("$.id").value<Int> { id ->
+                val imageEntity = imageJpaRepository.findById(id.toLong()).block()
                 assertThat(imageEntity).isNotNull
                 assertThat(imageEntity?.fileName).isEqualTo("sample_image.jpg")
                 assertThat(imageEntity?.path).contains("sample_image.jpg")
