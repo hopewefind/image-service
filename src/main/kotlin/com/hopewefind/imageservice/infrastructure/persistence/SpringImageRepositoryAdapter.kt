@@ -15,7 +15,7 @@ class SpringImageRepositoryAdapter(private val imageJpaRepository: ImageJpaRepos
         imageJpaRepository.save(image.toEntity()).awaitSingle().toDomain()
 
     override suspend fun findById(id: ImageId): Image? =
-        imageJpaRepository.findById { id.value }.awaitFirstOrNull()?.toDomain()
+        imageJpaRepository.findById(id.value).awaitFirstOrNull()?.toDomain()
 
     fun ImageEntity.toDomain(): Image = Image(
         id = ImageId(this.id!!),
