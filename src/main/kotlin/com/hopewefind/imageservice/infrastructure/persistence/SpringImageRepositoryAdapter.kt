@@ -7,27 +7,31 @@ import com.hopewefind.imageservice.domain.UserId
 import kotlinx.coroutines.reactive.awaitFirstOrNull
 import kotlinx.coroutines.reactor.awaitSingle
 import org.springframework.stereotype.Component
-import java.time.Instant
 
 @Component
-class SpringImageRepositoryAdapter(private val imageJpaRepository: ImageJpaRepository) : ImageRepository {
+class SpringImageRepositoryAdapter(private val imageRepository: ImageR2dbcRepository) : ImageRepository {
     override suspend fun save(image: Image): Image =
-        imageJpaRepository.save(image.toEntity()).awaitSingle().toDomain()
+        imageRepository.save(image.toEntity()).awaitSingle().toDomain()
 
     override suspend fun findById(id: ImageId): Image? =
-        imageJpaRepository.findById(id.value).awaitFirstOrNull()?.toDomain()
+        imageRepository.findById(id.value).awaitFirstOrNull()?.toDomain()
 
     fun ImageEntity.toDomain(): Image = Image(
         id = ImageId(this.id!!),
         uploaderId = UserId(0),
         fileName = this.fileName,
-        path = this.path,
-        uploadedAt = Instant.now()
+        objectKey = this.objectKey,
+        contentType = this.contentType,
+        sizeBytes = this.sizeBytes,
+        uploadedAt = this.uploadedAt
     )
 
     fun Image.toEntity(): ImageEntity = ImageEntity(
         id = this.id?.value,
         fileName = this.fileName,
-        path = this.path
+        objectKey = this.objectKey,
+        contentType = this.contentType,
+        sizeBytes = this.sizeBytes,
+        uploadedAt = this.uploadedAt
     )
 }

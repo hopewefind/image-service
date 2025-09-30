@@ -1,6 +1,9 @@
 spring:
   application:
     name: image-service
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
 
   sql:
     init:
